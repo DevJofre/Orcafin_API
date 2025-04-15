@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35818.85
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orcafin.WebApi", "Orcafin\Orcafin.WebApi.csproj", "{366A00E4-F3ED-4673-9688-F88EBA89E7CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orcafin.Application", "Orcafin.Application\Orcafin.Application.csproj", "{BC04179C-42D8-44F4-B4F7-E3FD125952D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orcafin.Domain", "Orcafin.Domain\Orcafin.Domain.csproj", "{72F9B109-C9AE-419C-BE31-E7D550C585D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orcafin.Infrastructure", "Orcafin.Infrastructure\Orcafin.Infrastructure.csproj", "{993551AB-8C14-4344-8B9B-987DC6A663D8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiSendGrid", "ApiSendGrid\ApiSendGrid.csproj", "{940E708A-62B2-4468-B25A-8EF3ED8011BF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orcafin. UnitTests", "Orcafin. UnitTests\Orcafin. UnitTests.csproj", "{57D5706F-B00E-40B0-8756-8D3B47E33B71}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{366A00E4-F3ED-4673-9688-F88EBA89E7CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{366A00E4-F3ED-4673-9688-F88EBA89E7CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{366A00E4-F3ED-4673-9688-F88EBA89E7CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{366A00E4-F3ED-4673-9688-F88EBA89E7CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC04179C-42D8-44F4-B4F7-E3FD125952D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC04179C-42D8-44F4-B4F7-E3FD125952D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC04179C-42D8-44F4-B4F7-E3FD125952D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC04179C-42D8-44F4-B4F7-E3FD125952D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72F9B109-C9AE-419C-BE31-E7D550C585D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72F9B109-C9AE-419C-BE31-E7D550C585D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72F9B109-C9AE-419C-BE31-E7D550C585D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72F9B109-C9AE-419C-BE31-E7D550C585D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{993551AB-8C14-4344-8B9B-987DC6A663D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{993551AB-8C14-4344-8B9B-987DC6A663D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{993551AB-8C14-4344-8B9B-987DC6A663D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{993551AB-8C14-4344-8B9B-987DC6A663D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{940E708A-62B2-4468-B25A-8EF3ED8011BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{940E708A-62B2-4468-B25A-8EF3ED8011BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{940E708A-62B2-4468-B25A-8EF3ED8011BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{940E708A-62B2-4468-B25A-8EF3ED8011BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57D5706F-B00E-40B0-8756-8D3B47E33B71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57D5706F-B00E-40B0-8756-8D3B47E33B71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57D5706F-B00E-40B0-8756-8D3B47E33B71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57D5706F-B00E-40B0-8756-8D3B47E33B71}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {98435FA5-D14A-43AE-A947-D4CF2D75B544}
+	EndGlobalSection
+EndGlobal
