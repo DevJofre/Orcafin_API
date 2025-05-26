@@ -11,6 +11,7 @@
 		<ProjectReference Include="..\Orcafin. UnitTests\Orcafin. UnitTests.csproj" />
 		<ProjectReference Include="..\Orcafin.Domain\Orcafin.Domain.csproj" />
 		<ProjectReference Include="..\Orcafin\Orcafin.WebApi.csproj" />
+		<ProjectReference Include="..\Orcafin.Application\Orcafin.Application.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

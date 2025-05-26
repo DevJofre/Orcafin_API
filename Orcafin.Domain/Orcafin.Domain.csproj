@@ -9,7 +9,6 @@
 	<ItemGroup>
 		<ProjectReference Include="..\ApiSendGrid\ApiSendGrid.csproj" />
 		<ProjectReference Include="..\Orcafin. UnitTests\Orcafin. UnitTests.csproj" />
-		<ProjectReference Include="..\Orcafin\Orcafin.WebApi.csproj" />
 	</ItemGroup>
 	
 </Project>

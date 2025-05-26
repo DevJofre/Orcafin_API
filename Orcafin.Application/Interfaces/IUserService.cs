@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Orcafin.Application.Dto;
 
 namespace Orcafin.Application.Interfaces
 {
-    internal interface IUserService
+    public interface IUserService
     {
+        Task<IEnumerable<UserResponse>> GetAllAsync();
+        Task<UserResponse?> GetByIdAsync(int id);
+        Task<UserResponse> CreateAsync(UserCreateRequest request);
+        Task<bool> UpdateAsync(int id, UserUpdateRequest request);
+        Task<bool> DeleteAsync(int id);
     }
 }

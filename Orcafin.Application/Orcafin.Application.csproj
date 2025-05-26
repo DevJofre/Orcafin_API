@@ -10,11 +10,10 @@
     <ProjectReference Include="..\ApiSendGrid\ApiSendGrid.csproj" />
     <ProjectReference Include="..\Orcafin. UnitTests\Orcafin. UnitTests.csproj" />
     <ProjectReference Include="..\Orcafin.Domain\Orcafin.Domain.csproj" />
-    <ProjectReference Include="..\Orcafin.Infrastructure\Orcafin.Infrastructure.csproj" />
-    <ProjectReference Include="..\Orcafin\Orcafin.WebApi.csproj" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.5">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
