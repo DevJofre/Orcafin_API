@@ -30,3 +30,17 @@ Use esse comando sempre que fizer mudanças no modelo de dados (ex: novas entida
 
   dotnet ef database drop
 
+#Resumo da ordem de implementação
+
+1- Camada Domain:	Definir entidades e interfaces
+   -- User.cs(Entities), IUserRepository.cs(Interfaces) --
+
+2- Camada Application: Corrigir namespace e implementar lógica
+    -- UserService.cs(Service), UserResponse.cs(Dto), IUserService.cs(Interfaces) --
+
+3- Camada Infrastructure: Implementar interfaces e configurar acesso a dados
+    -- UserRepository.cs(Repository), OrcafinDbContext(Context), UserConfiguration.cs(Configuration) --
+
+4- Camada WebApi: Criar endpoints e injetar serviços
+    -- UsersController.cs(Controller) --
+
