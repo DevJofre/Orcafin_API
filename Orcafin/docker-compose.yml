@@ -1,23 +1,17 @@
-version: '3.9'
+version: '3.8'
 
 services:
-  sqlserver:
-    image: mcr.microsoft.com/mssql/server:2022-latest
-    container_name: sqlserver-orcafin
-    hostname: sqlserver-orcafin
+  db:
+    image: postgres:latest
+    restart: always
     environment:
-      ACCEPT_EULA: "Y"
-      MSSQL_SA_PASSWORD: "!Admin123"
+      - POSTGRES_DB=orcafin_db
+      - POSTGRES_USER=orcafin_user
+      - POSTGRES_PASSWORD=orcafin_password
     ports:
-      - "1433:1433"
+      - "5432:5432"
     volumes:
-      - sql_data:/var/opt/mssql
-    networks:
-      - orcafin-net
+      - postgres_data:/var/lib/postgresql/data
 
 volumes:
-  sql_data:
-
-networks:
-  orcafin-net:
-    driver: bridge
+  postgres_data:

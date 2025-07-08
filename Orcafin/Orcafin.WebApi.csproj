@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Orcafin.Application\Orcafin.Application.csproj" />
+    <ProjectReference Include="..\Orcafin.Infrastructure\Orcafin.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

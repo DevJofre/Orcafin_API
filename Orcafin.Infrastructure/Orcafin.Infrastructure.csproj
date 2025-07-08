@@ -7,11 +7,7 @@
   </PropertyGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\ApiSendGrid\ApiSendGrid.csproj" />
-		<ProjectReference Include="..\Orcafin. UnitTests\Orcafin. UnitTests.csproj" />
 		<ProjectReference Include="..\Orcafin.Domain\Orcafin.Domain.csproj" />
-		<ProjectReference Include="..\Orcafin\Orcafin.WebApi.csproj" />
-		<ProjectReference Include="..\Orcafin.Application\Orcafin.Application.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -20,6 +16,10 @@
 	    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 	    <PrivateAssets>all</PrivateAssets>
 	  </PackageReference>
+	  <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.7" />
+	  <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="9.0.7" />
+	  <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.7" />
+	  <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.4" />
 	</ItemGroup>
 
 </Project>
