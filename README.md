@@ -44,3 +44,25 @@ Use esse comando sempre que fizer mudanças no modelo de dados (ex: novas entida
 4- Camada WebApi: Criar endpoints e injetar serviços
     -- UsersController.cs(Controller) --
 
+#######################################################################################################################################
+
+   1. Inicie o Docker: Certifique-se de que o Docker Desktop esteja em execução na sua máquina.
+
+   2. Suba o Container do Banco de Dados: Abra um terminal na pasta C:\Users\jofre.tomas\Projetos\Orcafin_api\Orcafin e execute o seguinte comando:
+
+   1     docker-compose up -d
+   
+      Isso irá baixar a imagem do PostgreSQL (se você não a tiver) e iniciar o container em segundo plano (-d).
+
+   3. Aplique as Migrações: Como estamos usando um novo tipo de banco de dados, é uma boa prática remover a migração existente e criar uma nova.
+
+       * Remova a pasta `Migrations` dentro de Orcafin.Infrastructure.
+       * Crie uma nova migração: No terminal, na raiz do projeto, execute:
+
+   1         dotnet ef migrations add InitialCreate --project Orcafin.Infrastructure --startup-project Orcafin
+
+   1         dotnet ef database update --project Orcafin.Infrastructure --startup-project Orcafin
+
+   4. Execute a Aplicação: Agora você pode executar sua API a partir do Visual Studio ou usando o comando dotnet run no projeto Orcafin. Ela irá se conectar automaticamente ao banco de dados no
+      Docker.
+
