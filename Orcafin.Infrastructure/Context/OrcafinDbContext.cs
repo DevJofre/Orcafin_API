@@ -10,11 +10,13 @@ namespace Orcafin.Infrastructure.Context
         public OrcafinDbContext(DbContextOptions<OrcafinDbContext> options) : base(options) { }
 
         public DbSet<User> Users { get; set; }
+        public DbSet<SubscriptionPlan> SubscriptionPlans { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // Aplica a configuração da entidade User (e outras que você criar futuramente)
             modelBuilder.ApplyConfiguration(new UserConfiguration());
+            modelBuilder.ApplyConfiguration(new SubscriptionPlanConfiguration());
 
             base.OnModelCreating(modelBuilder);
         }

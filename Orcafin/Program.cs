@@ -4,6 +4,7 @@ using Orcafin.Application.Services;
 using Orcafin.Domain.Interfaces;
 using Orcafin.Infrastructure.Context;
 using Orcafin.Infrastructure.Repository;
+using System.IO;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +17,8 @@ builder.Services.AddDbContext<OrcafinDbContext>(options =>
 // Injeção de Dependência
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<ISubscriptionPlanRepository, SubscriptionPlanRepository>();
+builder.Services.AddScoped<ISubscriptionPlanService, SubscriptionPlanService>();
 
 
 builder.Services.AddControllers();
