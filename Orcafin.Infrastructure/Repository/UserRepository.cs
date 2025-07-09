@@ -45,6 +45,8 @@ namespace Orcafin.Infrastructure.Repository
 
         public async Task<User> GetByCpfAsync(string cpf) => await _context.Users.FirstOrDefaultAsync(u => u.Cpf == cpf);
 
+        public async Task<User> GetByPhoneNumberAsync(string phoneNumber) => await _context.Users.FirstOrDefaultAsync(u => u.PhoneNumber == phoneNumber);
+
         public async Task UpdateAsync(User user)
         { 
             _context.Users.Update(user);

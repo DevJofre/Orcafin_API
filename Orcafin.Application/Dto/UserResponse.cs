@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Orcafin.Domain.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,10 @@ namespace Orcafin.Application.Dto
         public string Email { get; set; }
         public string Login { get; set; }
         public string Cpf { get; set; }
+        public string PhoneNumber { get; set; }
+        public UserRole Role { get; set; }
+        public decimal Balance { get; set; }
+        public UserStatus Status { get; set; }
 
         public UserResponse() { }
 
@@ -24,6 +29,10 @@ namespace Orcafin.Application.Dto
             Email = user.Email;
             Login = user.Login;
             Cpf = user.Cpf;
+            PhoneNumber = user.PhoneNumber;
+            Role = user.Role;
+            Balance = user.Balance;
+            Status = user.Status;
         }
 
         public User ToEntity()

@@ -25,6 +25,15 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
+// Seed data
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var context = services.GetRequiredService<OrcafinDbContext>();
+    await context.Database.MigrateAsync(); // Garante que as migrações estão aplicadas
+    await context.SeedData(); // Chama o método de seed
+}
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {

@@ -2,6 +2,13 @@
 using Orcafin.Application.Interfaces;
 using Orcafin.Domain.Entities;
 using Orcafin.Domain.Interfaces;
+using Orcafin.Domain.Enums;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace Orcafin.Application.Services
 {
@@ -33,6 +40,11 @@ namespace Orcafin.Application.Services
                 throw new Exception("CPF inválido. Deve conter exatamente 11 números.");
             }
 
+            if (!IsValidPhoneNumber(request.PhoneNumber))
+            {
+                throw new Exception("Número de telefone inválido. Deve conter entre 10 e 11 números.");
+            }
+
             var existingUserByEmail = await _userRepository.GetByEmailAsync(request.Email);
             if (existingUserByEmail != null)
             {
@@ -51,13 +63,23 @@ namespace Orcafin.Application.Services
                 throw new Exception("CPF já existe.");
             }
 
+            var existingUserByPhoneNumber = await _userRepository.GetByPhoneNumberAsync(request.PhoneNumber);
+            if (existingUserByPhoneNumber != null)
+            {
+                throw new Exception("Número de telefone já existe.");
+            }
+
             var user = new User
             {
                 Name = request.Name,
                 Email = request.Email,
                 Login = request.Login,
                 Cpf = request.Cpf,
-                PasswordHash = BCrypt.Net.BCrypt.HashPassword(request.Password) // ou outra lógica de hash
+                PhoneNumber = request.PhoneNumber,
+                PasswordHash = BCrypt.Net.BCrypt.HashPassword(request.Password),
+                Role = request.Role ?? UserRole.USER, // Valor padrão
+                Balance = request.Balance ?? 0.00m, // Valor padrão
+                Status = request.Status ?? UserStatus.ENABLED // Valor padrão
             };
 
             await _userRepository.AddAsync(user);
@@ -73,6 +95,11 @@ namespace Orcafin.Application.Services
             if (!IsValidCpf(request.Cpf))
             {
                 throw new Exception("CPF inválido. Deve conter exatamente 11 números.");
+            }
+
+            if (!IsValidPhoneNumber(request.PhoneNumber))
+            {
+                throw new Exception("Número de telefone inválido. Deve conter entre 10 e 11 números.");
             }
 
             // Verifica unicidade do email se ele foi alterado
@@ -105,10 +132,24 @@ namespace Orcafin.Application.Services
                 }
             }
 
+            // Verifica unicidade do telefone se ele foi alterado
+            if (existingUser.PhoneNumber != request.PhoneNumber)
+            {
+                var userWithSamePhoneNumber = await _userRepository.GetByPhoneNumberAsync(request.PhoneNumber);
+                if (userWithSamePhoneNumber != null && userWithSamePhoneNumber.Id != id)
+                {
+                    throw new Exception("Número de telefone já existe.");
+                }
+            }
+
             existingUser.Name = request.Name;
             existingUser.Email = request.Email;
             existingUser.Login = request.Login;
             existingUser.Cpf = request.Cpf;
+            existingUser.PhoneNumber = request.PhoneNumber;
+            existingUser.Role = request.Role ?? existingUser.Role;
+            existingUser.Balance = request.Balance ?? existingUser.Balance;
+            existingUser.Status = request.Status ?? existingUser.Status;
 
             await _userRepository.UpdateAsync(existingUser);
             return true;
@@ -116,7 +157,12 @@ namespace Orcafin.Application.Services
 
         private bool IsValidCpf(string cpf)
         {
-            return cpf != null && cpf.Length == 11 && System.Text.RegularExpressions.Regex.IsMatch(cpf, "^[0-9]{11}$");
+            return cpf != null && cpf.Length == 11 && Regex.IsMatch(cpf, "^[0-9]{11}$");
+        }
+
+        private bool IsValidPhoneNumber(string phoneNumber)
+        {
+            return phoneNumber != null && (phoneNumber.Length == 10 || phoneNumber.Length == 11) && Regex.IsMatch(phoneNumber, "^[0-9]+$");
         }
 
         public async Task<bool> DeleteAsync(int id)

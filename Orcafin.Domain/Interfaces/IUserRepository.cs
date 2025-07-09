@@ -13,6 +13,7 @@ namespace Orcafin.Domain.Interfaces
         Task<User> GetByEmailAsync(string email);
         Task<User> GetByLoginAsync(string login);
         Task<User> GetByCpfAsync(string cpf);
+        Task<User> GetByPhoneNumberAsync(string phoneNumber);
         Task<IEnumerable<User>> GetAllAsync();
         Task AddAsync(User user);
         Task UpdateAsync(User user);
