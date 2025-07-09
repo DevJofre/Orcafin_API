@@ -16,6 +16,12 @@ namespace Orcafin.Application.Dto
         public string Email { get; set; }
 
         [Required]
+        public string Login { get; set; }
+
+        [Required]
+        public string Cpf { get; set; }
+
+        [Required]
         public string Password { get; set; }
     }
 }

@@ -39,6 +39,12 @@ namespace Orcafin.Infrastructure.Repository
 
         public async Task<User> GetByIdAsync(int id) => await _context.Users.FindAsync(id);
 
+        public async Task<User> GetByEmailAsync(string email) => await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
+
+        public async Task<User> GetByLoginAsync(string login) => await _context.Users.FirstOrDefaultAsync(u => u.Login == login);
+
+        public async Task<User> GetByCpfAsync(string cpf) => await _context.Users.FirstOrDefaultAsync(u => u.Cpf == cpf);
+
         public async Task UpdateAsync(User user)
         { 
             _context.Users.Update(user);

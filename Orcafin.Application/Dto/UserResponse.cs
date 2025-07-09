@@ -12,6 +12,8 @@ namespace Orcafin.Application.Dto
         public int Id { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
+        public string Login { get; set; }
+        public string Cpf { get; set; }
 
         public UserResponse() { }
 
@@ -20,6 +22,8 @@ namespace Orcafin.Application.Dto
             Id = user.Id;
             Name = user.Name;
             Email = user.Email;
+            Login = user.Login;
+            Cpf = user.Cpf;
         }
 
         public User ToEntity()

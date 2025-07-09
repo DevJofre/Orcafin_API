@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ApiSendGrid\ApiSendGrid.csproj" />
-    <ProjectReference Include="..\Orcafin. UnitTests\Orcafin. UnitTests.csproj" />
     <ProjectReference Include="..\Orcafin.Domain\Orcafin.Domain.csproj" />
   </ItemGroup>
 
