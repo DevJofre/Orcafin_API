@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Orcafin.Domain.Entities;
 using Orcafin.Infrastructure.Configuration;
 using Orcafin.Domain.Enums;
@@ -160,6 +160,137 @@ namespace Orcafin.Infrastructure.Context
                 };
 
                 await Users.AddRangeAsync(users);
+                await SaveChangesAsync();
+            }
+
+            if (!SubscriptionPlans.Any())
+            {
+                var plans = new List<SubscriptionPlan>
+                {
+                    new SubscriptionPlan { Id = 1, Type = SubscriptionType.MENSAL, GatewayId = "plan_mensal_001" },
+                    new SubscriptionPlan { Id = 2, Type = SubscriptionType.TRIMESTRAL, GatewayId = "plan_trimestral_002" },
+                    new SubscriptionPlan { Id = 3, Type = SubscriptionType.ANUAL, GatewayId = "plan_anual_003" }
+                };
+                await SubscriptionPlans.AddRangeAsync(plans);
+                await SaveChangesAsync();
+            }
+
+            if (!PaymentTypes.Any())
+            {
+                var paymentTypes = new List<PaymentType>
+                {
+                    new PaymentType { Id = 1, Name = "Cartão de Crédito", Status = PaymentStatus.ENABLED },
+                    new PaymentType { Id = 2, Name = "PIX", Status = PaymentStatus.ENABLED },
+                    new PaymentType { Id = 3, Name = "Boleto", Status = PaymentStatus.DISABLED }
+                };
+                await PaymentTypes.AddRangeAsync(paymentTypes);
+                await SaveChangesAsync();
+            }
+
+            if (!Categories.Any())
+            {
+                var categories = new List<Category>
+                {
+                    new Category { Id = 1, Name = "Alimentação" },
+                    new Category { Id = 2, Name = "Transporte" },
+                    new Category { Id = 3, Name = "Salário" },
+                    new Category { Id = 4, Name = "Lazer" }
+                };
+                await Categories.AddRangeAsync(categories);
+                await SaveChangesAsync();
+            }
+
+            if (!UserAssignments.Any())
+            {
+                var userAssignments = new List<UserAssignment>
+                {
+                    new UserAssignment
+                    {
+                        Id = 1,
+                        UserId = 1, // User 1
+                        PlanId = 1, // Mensal
+                        PaymentMethod = PaymentMethodType.PIX,
+                        LastPaymentDate = DateTime.UtcNow.AddMonths(-1),
+                        NextPaymentDate = DateTime.UtcNow.AddDays(15)
+                    },
+                    new UserAssignment
+                    {
+                        Id = 2,
+                        UserId = 2, // User 2
+                        PlanId = 3, // Anual
+                        PaymentMethod = PaymentMethodType.CARTAO,
+                        LastPaymentDate = DateTime.UtcNow.AddMonths(-3),
+                        NextPaymentDate = DateTime.UtcNow.AddMonths(9)
+                    }
+                };
+                await UserAssignments.AddRangeAsync(userAssignments);
+                await SaveChangesAsync();
+            }
+
+            if (!PaymentHistory.Any())
+            {
+                var paymentHistories = new List<PaymentHistory>
+                {
+                    new PaymentHistory
+                    {
+                        Id = 1,
+                        UserId = 1, // User 1
+                        PaidAt = DateTime.UtcNow.AddMonths(-1),
+                        Status = PaymentStatusEnum.COMPLETED,
+                        PaymentTypeId = 2 // PIX
+                    },
+                    new PaymentHistory
+                    {
+                        Id = 2,
+                        UserId = 2, // User 2
+                        PaidAt = DateTime.UtcNow.AddMonths(-3),
+                        Status = PaymentStatusEnum.FAILED,
+                        PaymentTypeId = 1 // Cartão de Crédito
+                    }
+                };
+                await PaymentHistory.AddRangeAsync(paymentHistories);
+                await SaveChangesAsync();
+            }
+
+            if (!TransactionHistory.Any())
+            {
+                var transactionHistories = new List<TransactionHistory>
+                {
+                    new TransactionHistory
+                    {
+                        Id = 1,
+                        UserId = 1, // User 1
+                        Identifier = "TRANS001",
+                        Description = "Almoço no restaurante",
+                        Amount = 45.50m,
+                        Type = TransactionType.DESPESA,
+                        CategoryId = 1, // Alimentação
+                        TransactionAt = DateTime.UtcNow.AddDays(-5)
+                    },
+                    new TransactionHistory
+                    {
+                        Id = 2,
+                        UserId = 1, // User 1
+                        Identifier = "TRANS002",
+                        Description = "Salário mensal",
+                        Amount = 3000.00m,
+                        Type = TransactionType.RECEITA,
+                        CategoryId = 3, // Salário
+                        TransactionAt = DateTime.UtcNow.AddDays(-2)
+                    },
+                    new TransactionHistory
+                    {
+                        Id = 3,
+                        UserId = 2, // User 2
+                        Identifier = "TRANS003",
+                        Description = "Passagem de ônibus",
+                        Amount = 5.00m,
+                        Type = TransactionType.DESPESA,
+                        CategoryId = 2, // Transporte
+                        TransactionAt = DateTime.UtcNow.AddDays(-1)
+                    }
+                };
+                await TransactionHistory.AddRangeAsync(transactionHistories);
                 await SaveChangesAsync();
             }
         }
