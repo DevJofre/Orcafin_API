@@ -13,6 +13,7 @@ namespace Orcafin.Infrastructure.Context
         public DbSet<SubscriptionPlan> SubscriptionPlans { get; set; }
         public DbSet<PaymentType> PaymentTypes { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<UserAssignment> UserAssignments { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -21,6 +22,7 @@ namespace Orcafin.Infrastructure.Context
             modelBuilder.ApplyConfiguration(new SubscriptionPlanConfiguration());
             modelBuilder.ApplyConfiguration(new PaymentTypeConfiguration());
             modelBuilder.ApplyConfiguration(new CategoryConfiguration());
+            modelBuilder.ApplyConfiguration(new UserAssignmentConfiguration());
 
             base.OnModelCreating(modelBuilder);
         }
