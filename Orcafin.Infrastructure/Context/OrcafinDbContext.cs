@@ -11,12 +11,14 @@ namespace Orcafin.Infrastructure.Context
 
         public DbSet<User> Users { get; set; }
         public DbSet<SubscriptionPlan> SubscriptionPlans { get; set; }
+        public DbSet<PaymentType> PaymentTypes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // Aplica a configuração da entidade User (e outras que você criar futuramente)
             modelBuilder.ApplyConfiguration(new UserConfiguration());
             modelBuilder.ApplyConfiguration(new SubscriptionPlanConfiguration());
+            modelBuilder.ApplyConfiguration(new PaymentTypeConfiguration());
 
             base.OnModelCreating(modelBuilder);
         }
