@@ -2,13 +2,13 @@ namespace Orcafin.Domain.Enums
 {
     public enum UserRole
     {
-        ADMIN,
-        USER
+        ADMIN = 0,
+        USER = 1
     }
 
     public enum UserStatus
     {
-        ENABLED,
-        DISABLED
+        ENABLED = 0,
+        DISABLED = 1
     }
 }

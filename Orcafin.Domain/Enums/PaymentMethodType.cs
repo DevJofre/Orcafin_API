@@ -2,8 +2,8 @@ namespace Orcafin.Domain.Enums
 {
     public enum PaymentMethodType
     {
-        PIX,
-        CARTAO,
-        BOLETO
+        PIX = 0,
+        CARTAO = 1,
+        BOLETO = 2
     }
 }
