@@ -15,6 +15,7 @@ namespace Orcafin.Infrastructure.Context
         public DbSet<Category> Categories { get; set; }
         public DbSet<UserAssignment> UserAssignments { get; set; }
         public DbSet<PaymentHistory> PaymentHistory { get; set; }
+        public DbSet<TransactionHistory> TransactionHistory { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -25,6 +26,7 @@ namespace Orcafin.Infrastructure.Context
             modelBuilder.ApplyConfiguration(new CategoryConfiguration());
             modelBuilder.ApplyConfiguration(new UserAssignmentConfiguration());
             modelBuilder.ApplyConfiguration(new PaymentHistoryConfiguration());
+            modelBuilder.ApplyConfiguration(new TransactionHistoryConfiguration());
 
             base.OnModelCreating(modelBuilder);
         }
