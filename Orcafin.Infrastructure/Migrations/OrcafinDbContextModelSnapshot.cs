@@ -40,6 +40,36 @@ namespace Orcafin.Infrastructure.Migrations
                     b.ToTable("Categories");
                 });
 
+            modelBuilder.Entity("Orcafin.Domain.Entities.PaymentHistory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("PaidAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int>("PaymentTypeId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PaymentTypeId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("PaymentHistory");
+                });
+
             modelBuilder.Entity("Orcafin.Domain.Entities.PaymentType", b =>
                 {
                     b.Property<int>("Id")
@@ -164,6 +194,25 @@ namespace Orcafin.Infrastructure.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("UserAssignments");
+                });
+
+            modelBuilder.Entity("Orcafin.Domain.Entities.PaymentHistory", b =>
+                {
+                    b.HasOne("Orcafin.Domain.Entities.PaymentType", "PaymentType")
+                        .WithMany()
+                        .HasForeignKey("PaymentTypeId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Orcafin.Domain.Entities.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("PaymentType");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Orcafin.Domain.Entities.UserAssignment", b =>
