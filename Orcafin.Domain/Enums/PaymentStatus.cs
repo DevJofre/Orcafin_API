@@ -2,7 +2,7 @@ namespace Orcafin.Domain.Enums
 {
     public enum PaymentStatus
     {
-        ENABLED,
-        DISABLED
+        ENABLED = 0,
+        DISABLED = 1
     }
 }

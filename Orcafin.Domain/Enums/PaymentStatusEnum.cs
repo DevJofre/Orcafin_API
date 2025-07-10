@@ -2,7 +2,7 @@ namespace Orcafin.Domain.Enums
 {
     public enum PaymentStatusEnum
     {
-        COMPLETED,
-        FAILED
+        COMPLETED = 0,
+        FAILED = 1
     }
 }
