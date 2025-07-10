@@ -23,6 +23,8 @@ builder.Services.AddScoped<IPaymentTypeRepository, PaymentTypeRepository>();
 builder.Services.AddScoped<IPaymentTypeService, PaymentTypeService>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddScoped<IUserAssignmentRepository, UserAssignmentRepository>();
+builder.Services.AddScoped<IUserAssignmentService, UserAssignmentService>();
 
 
 builder.Services.AddControllers();
